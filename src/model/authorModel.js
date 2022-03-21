@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const validator = require("validator")
 const authorSchema = new mongoose.Schema({
 
     fname: {
@@ -17,12 +17,23 @@ const authorSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        trim: true,
+        lowercase: true,
+        unique: true,
+        required: 'Email address is required',
+        validate: {
+            validator: validator.isEmail,
+            message: '{VALUE} is not a valid email',
+            isAsync: false
+        }
+
     },
     password: {
         type: String,
-        required: true
+        required: true,
+
+
+
     }
 }, { timestamps: true });
 

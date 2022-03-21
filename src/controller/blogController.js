@@ -68,7 +68,7 @@ const updateBlog = async function(req, res) {
 
                 return res
                     .status(200)
-                    .send({ msg: "blog updated successfully", updatedBlog });
+                    .send({ msg: "blog is updated successfully", updatedBlog });
             } else {
                 return res.status(404).send({ msg: "blog not found" });
             }
